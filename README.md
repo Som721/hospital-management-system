@@ -2,7 +2,6 @@
 
 Console-based Hospital Management System built in **pure Java** with **CSV file persistence** — no database server, no external dependencies.
 
-Built for **VITyarthi – Build Your Own Project** evaluation.
 
 ## Features
 
