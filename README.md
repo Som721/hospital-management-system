@@ -1,7 +1,8 @@
 # Hospital Management System (Java + CSV)
 
-Console-based Hospital Management System built in **pure Java** with **CSV file persistence** — no database server, no external dependencies.
+Console-based Hospital Management System built in *pure Java* with *CSV file persistence* — no database server, no external dependencies.
 
+Built for *VITyarthi – Build Your Own Project* evaluation.
 
 ## Features
 
@@ -15,7 +16,7 @@ Console-based Hospital Management System built in **pure Java** with **CSV file 
 
 ### Module 3 — Appointment Scheduling
 - Book / cancel / reschedule / complete appointments
-- **Conflict detection:** same doctor + same date + same slot cannot be double-booked
+- *Conflict detection:* same doctor + same date + same slot cannot be double-booked
 - Referential integrity: patient and doctor must exist
 - Views: all, by date, by doctor, by patient
 
@@ -25,13 +26,13 @@ Console-based Hospital Management System built in **pure Java** with **CSV file 
 
 ## Tech Stack
 - Java 17+ (tested on OpenJDK 17/25)
-- CSV persistence via `java.nio.file` (`database/*.csv` — see `database/SCHEMA.md`)
-- Layered architecture: `model → service → storage → Main (CLI)`
-- `HashMap` for O(1) lookups, `ArrayList` for listings/search
-- `java.time` for date/slot validation, file logger
+- CSV persistence via java.nio.file (database/*.csv — see database/SCHEMA.md)
+- Layered architecture: model → service → storage → Main (CLI)
+- HashMap for O(1) lookups, ArrayList for listings/search
+- java.time for date/slot validation, file logger
 
 ## Project Structure
-```
+
 hospital-management-system/
 ├── README.md
 ├── statement.md
@@ -50,51 +51,51 @@ hospital-management-system/
 ├── database/patients.csv, doctors.csv, appointments.csv
 ├── database/SCHEMA.md
 └── docs/  (architecture, diagrams, report outline)
-```
+
 
 ## Installation & Run
 
 ### Prerequisites
-- JDK 17 or higher with `javac`:
-```bash
+- JDK 17 or higher with javac:
+bash
 java -version
 javac -version
 # Fedora: sudo dnf install java-17-openjdk-devel -y
 # Ubuntu: sudo apt install openjdk-17-jdk -y
-```
+
 
 ### Compile & Run (Linux/macOS)
-```bash
+bash
 chmod +x run.sh
 ./run.sh
-```
+
 
 ### Manual Compile & Run
-```bash
+bash
 mkdir -p out
 javac -d out $(find backend/src/main/java frontend/src/main/java -name "*.java")
 java -cp out com.hospital.Main
-```
 
-### Docker
-```bash
+
+### Docker (optional, mirrors friend's CampusFix layout)
+bash
 cp .env.example .env
 docker compose up --build
-```
+
 
 ### Windows
-```bat
+bat
 run.bat
-```
+
 
 ## Testing
 No JUnit needed — self-contained test runner:
-```bash
+bash
 mkdir -p out
 javac -d out $(find backend/src/main/java backend/src/test/java frontend/src/main/java -name "*.java")
 java -cp out com.hospital.HospitalSystemTest
-```
-Expected: `6+ PASS` lines, `0 failed`.
+
+Expected: 14 PASS lines, 0 failed.
 
 | Test | What it checks |
 |------|---------------|
@@ -106,20 +107,20 @@ Expected: `6+ PASS` lines, `0 failed`.
 | CSV round-trip | save + load preserves data |
 
 ## Sample Workflow
-1. Add patient `P001` → Add doctor `D001` (Cardiology, slots 10:00,11:00)
-2. Book `P001 + D001` on `2026-10-01 10:00` → success
+1. Add patient P001 → Add doctor D001 (Cardiology, slots 10:00,11:00)
+2. Book P001 + D001 on 2026-10-01 10:00 → success
 3. Book same slot again → rejected (conflict detection)
 4. Cancel → rebook same slot → success
 5. Billing → enter extra charges → receipt printed
-6. Restart app → data persists from `database/*.csv`
+6. Restart app → data persists from database/*.csv
 
 ## Non-Functional Highlights
-- **Performance:** HashMap O(1) lookup by ID
-- **Reliability:** auto-save CSV after every menu action + on exit
-- **Usability:** menu-driven CLI with validation messages
-- **Maintainability:** layered packages, single-responsibility classes
-- **Error handling:** illegal input blocked with clear messages
-- **Logging:** every mutation appended to `database/hospital.log`
+- *Performance:* HashMap O(1) lookup by ID
+- *Reliability:* auto-save CSV after every menu action + on exit
+- *Usability:* menu-driven CLI with validation messages
+- *Maintainability:* layered packages, single-responsibility classes
+- *Error handling:* illegal input blocked with clear messages
+- *Logging:* every mutation appended to database/hospital.log
 
 ## Screenshots
 Run the app and capture:
@@ -128,5 +129,5 @@ Run the app and capture:
 3. Doctor list
 4. Double-booking error message
 5. Bill receipt
-6. Test run output (`HospitalSystemTest`)
+6. Test run output (HospitalSystemTest)
 
