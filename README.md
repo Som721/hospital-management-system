@@ -76,7 +76,7 @@ javac -d out $(find backend/src/main/java frontend/src/main/java -name "*.java")
 java -cp out com.hospital.Main
 ```
 
-### Docker (optional, mirrors friend's CampusFix layout)
+### Docker
 ```bash
 cp .env.example .env
 docker compose up --build
