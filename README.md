@@ -130,4 +130,3 @@ Run the app and capture:
 5. Bill receipt
 6. Test run output (`HospitalSystemTest`)
 
-Paste them into your project report PDF (Section 10).
