@@ -2,7 +2,6 @@
 
 Console-based Hospital Management System built in **pure Java** with **CSV file persistence** — no database server, no external dependencies.
 
-Built for **VITyarthi – Build Your Own Project** evaluation.
 
 ## Features
 
@@ -131,4 +130,3 @@ Run the app and capture:
 5. Bill receipt
 6. Test run output (`HospitalSystemTest`)
 
-Paste them into your project report PDF (Section 10).
