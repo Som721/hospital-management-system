@@ -1,0 +1,11 @@
+@startuml
+actor Receptionist
+actor Doctor
+Receptionist --> (Manage Patients)
+Receptionist --> (Manage Doctors)
+Receptionist --> (Book Appointment)
+Receptionist --> (Cancel/Reschedule Appointment)
+Receptionist --> (Generate Bill)
+Doctor --> (View My Schedule)
+Receptionist --> (View Reports)
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+class Patient {
+  -id : String
+  -name : String
+  -age : int
+  +toCSV() : String
+  +fromCSV() : Patient
+}
+class Doctor {
+  -id : String
+  -specialization : String
+  -fee : double
+  -slots : List<String>
+  +toCSV() : String
+}
+class Appointment {
+  -id : String
+  -patientId : String
+  -doctorId : String
+  -date : String
+  -slot : String
+  -status : String
+}
+class Bill {
+  -billId : String
+  -total : double
+  +receipt() : String
+}
+class PatientService {
+  +addPatient()
+  +searchByName()
+}
+class DoctorService {
+  +findBySpecialization()
+}
+class AppointmentService {
+  +bookAppointment()
+  +hasConflict() : boolean
+}
+class BillingService {
+  +generateBill()
+}
+class FileStorage {
+  +loadPatients()
+  +savePatients()
+}
+PatientService --> Patient
+DoctorService --> Doctor
+AppointmentService --> Appointment
+BillingService --> Bill
+Appointment --> Patient : patientId
+Appointment --> Doctor : doctorId
+Bill --> Appointment : appointmentId
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+actor User
+participant Main
+participant AppointmentService
+participant PatientService
+participant DoctorService
+participant FileStorage
+User -> Main : book(pid, did, date, slot)
+Main -> PatientService : getPatient(pid)
+Main -> DoctorService : getDoctor(did)
+Main -> AppointmentService : hasConflict(did, date, slot)
+alt conflict
+  AppointmentService --> Main : throw IllegalStateException
+  Main --> User : "Slot already booked"
+else no conflict
+  AppointmentService -> AppointmentService : create Appointment(BOOKED)
+  AppointmentService --> Main : return Appointment
+  Main -> FileStorage : saveAppointments()
+  Main --> User : "Booked: A1004"
+end
+@enduml
