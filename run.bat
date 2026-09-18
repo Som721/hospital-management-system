@@ -1,0 +1,6 @@
+@echo off
+mkdir out 2>nul
+echo [1/2] Compiling...
+javac -d out -sourcepath backend\src\main\java;frontend\src\main\java backend\src\main\java\com\hospital\model\*.java backend\src\main\java\com\hospital\service\*.java backend\src\main\java\com\hospital\storage\*.java backend\src\main\java\com\hospital\util\*.java frontend\src\main\java\com\hospital\Main.java
+echo [2/2] Running...
+java -cp out com.hospital.Main

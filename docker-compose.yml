@@ -1,0 +1,9 @@
+services:
+  hospital-app:
+    build: .
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./database:/app/database
+    env_file:
+      - .env.example

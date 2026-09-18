@@ -1,0 +1,10 @@
+*.class
+/out/
+out/
+*.log
+database/hospital.log
+.DS_Store
+.vscode/
+.idea/
+*.iml
+.env
